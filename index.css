@@ -1,0 +1,301 @@
+.text-platzi{
+    color: #19d1e2 !important;
+}
+
+.btn-platzi{
+    background: linear-gradient(90deg,#293035,#273b47 50%,#19d1e2);
+    color: white;
+}
+
+.btn-platzi:hover{
+    background: linear-gradient(90deg,#548db5,#65a5cd 50%,#19d1e2);
+}
+
+.btn-primary{
+    background: linear-gradient(90deg,#293035,#273b47 50%,#19d1e2);
+    color: white;
+}
+
+.btn-primary:hover{
+    background: linear-gradient(90deg,#548db5,#65a5cd 50%,#19d1e2);
+}
+
+
+#header img{
+    
+    width: 150px;
+
+}
+
+#main .carousel-inner img{
+    max-height: 70vh;
+    object-fit: cover;
+    filter: grayscale(70%);
+
+}
+
+#carousel{
+    position: relative;
+}
+
+#carousel .overlay{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.333);
+    color: white;
+
+}
+
+#carousel .overlay .container,
+#carousel .overlay .row{
+    height: 100%;
+}
+
+#soft-medida img{
+    max-width: 100%;
+  
+}
+
+#soft-medida{
+    background-color: #2eacb5;
+    color: white;
+  
+}
+
+
+.card-img-top {
+    width: auto; 
+    max-width: 100%; 
+    height: 150px; 
+    object-fit: contain; 
+    display: block; 
+    margin: 0 auto; 
+}
+
+div {
+padding: 10px;
+border-radius: 8px;
+}
+
+.modal-content {
+border-radius: 12px;
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+background: #ffffff;
+}
+
+.modal-header {
+background: #293035;
+color: white;
+border-top-left-radius: 12px;
+border-top-right-radius: 12px;
+}
+
+/* Cuerpo del modal */
+.modal-body {
+padding: 20px;
+font-size: 16px;
+color: #333;
+}
+
+/* Estilo para listas dentro de los modales */
+.modal-body ul {
+padding-left: 20px;
+}
+
+.modal-body ul li {
+margin-bottom: 10px;
+font-weight: 500;
+}
+
+/* Pie de página del modal */
+.modal-footer {
+background: #f1f1f1;
+border-bottom-left-radius: 12px;
+border-bottom-right-radius: 12px;
+}
+
+/* Botones del modal */
+.modal-footer .btn {
+border-radius: 6px;
+padding: 10px 20px;
+}
+
+/* Botón de cerrar */
+.modal-header .close {
+color: white;
+font-size: 24px;
+opacity: 0.8;
+}
+
+.modal-header .close:hover {
+opacity: 1;
+}
+
+/* Animación para el modal */
+@keyframes fadeIn {
+from {
+opacity: 0;
+transform: translateY(-10px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+.modal.fade .modal-dialog {
+animation: fadeIn 0.3s ease-in-out;
+}
+/* Estilos generales para los botones */
+.modal-footer .btn {
+border-radius: 8px;
+padding: 12px 20px;
+font-size: 16px;
+font-weight: 600;
+transition: all 0.3s ease-in-out;
+}
+
+/* Botón secundario (Cerrar) */
+.modal-footer .btn-secondary {
+background-color: #293035;
+color: white;
+border: none;
+}
+
+.modal-footer .btn-secondary:hover {
+background-color: #313539;
+transform: scale(1.05);
+}
+
+/* Botón primario (Trabajemos juntos) */
+.modal-footer .btn-primary {
+background: linear-gradient(135deg, #293035, #19d1e2);
+color: white;
+border: none;
+}
+
+.modal-footer .btn-primary:hover {
+background: linear-gradient(135deg, #94b0be, #649fe3);
+transform: scale(1.05);
+box-shadow: 0 4px 10px rgba(0, 123, 255, 0.4);
+}
+
+/* Efecto de clic en los botones */
+.modal-footer .btn:active {
+transform: scale(0.95);
+
+}
+
+.btn-xs {
+    font-size: 12px !important;
+    padding: 4px 12px !important;
+    border-radius: 8px !important;
+    font-weight: 500 !important;
+  }
+  
+  
+
+.card {
+    width: 320px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    margin: 10px auto;
+    font-family: sans-serif;
+  }
+  
+  .card__img img {
+    width: 100%;
+    border-radius: 12px;
+  }
+  
+  .card__avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: -60px auto 10px; 
+    border: 4px solid #24e6d3;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card__avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .card__title {
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+  
+  .card__subtitle {
+    color: #888;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  }
+  
+  .card__wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .card__btn {
+    padding: 8px 16px;
+    border: none;
+    background: transparent;
+    color: #000000;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .card__btn:hover {
+    background: #1db599;
+    color: #fff;
+  }
+  
+  .card__btn-solid {
+    background: #75daff;
+    color: #fff;
+  }
+  
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  cursor: pointer;
+  width: 150px;
+  height: 50px;
+  background-image: linear-gradient(to top, #D8D9DB 0%, #fff 80%, #FDFDFD 100%);
+  border-radius: 30px;
+  border: 1px solid #000000;
+  transition: all 0.2s ease;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #606060;
+}
+
+button:hover {
+  box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 3px 3px #CECFD1;
+}
+
+button:active {
+  box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
+}
+
+button:focus {
+  box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
+}
+

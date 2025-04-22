@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="preguntas.css">
+
+
+    <title>FYNIX</title>
+  </head>
+  <body>
+    <!-- nav -->
+    <header>
+      <img src="imgs/Logo.png" alt="FYNIX Logo">
+    </header>
+    <!-- /nav -->
+
+     <!-- login -->
+     <section id="contacto" class="pt-3 pb-3">
+      <div class="container">
+          <div class="row">
+                  <div class="col text-center text-uppercase">
+                          <small>Escribenos para que</small>
+                          <h2>Trabajemos juntos</h2>
+                          <small>Cuentanos exactamente que necesitas, ¡Cuantos mas detalles mejor!</small>
+      
+                  </div>
+          </div>
+          <div class="row">
+              <div class="col col-md-10 offset-md-1 col-lg-8 offset-lg-2 pt-2">
+                  <form>
+                          <div class="form-row">
+                            <div class="form-group col-12 col-md-6">
+                              <input type="text" class="form-control" name="name" placeholder="Nombre">
+                            </div>
+                            <div class="form-group col-12 col-md-6">
+                              <input type="text" class="form-control" name="last_name" placeholder="Apellido">
+                            </div>
+                            <div class="form-group col-12">
+                              <input type="text" class="form-control" name="email" placeholder="E-mail">
+                            </div>
+                          </div>
+                          <div class="form-row">
+                              <div class="form-group col">
+                                  <textarea name="text" class="form-control form-control-lg" placeholder="¿Como te podemos ayudar?"></textarea>
+                                  <!-- <small class="form-text text-muted"> 
+                                      Recuerda incluir un titulo para tu charla
+                                  </small> -->
+                              </div>
+                          </div>
+                          <div class="form-row">
+                              <div class="col">
+                                <button type="button" class="btn btn-platzi btn-block" onclick="enviarMensaje()">
+                                  <i class="fab fa-whatsapp"></i> Enviar
+                                </button>
+                            </div>
+
+                          </div>
+                        </form>
+
+              </div>
+          </div>
+      </div>
+
+  </section>
+
+     <!-- /login -->
+
+    <!-- footer -->
+    <footer id="footer" class="footer pt-5 pb-5 text-white">
+      <div class="container text-center">
+        <!-- Logo -->
+        <div class="mb-4 animate-logo">
+          <img src="imgs/Logo.png" alt="Logo FYNIX" class="footer-logo">
+        </div>
+    
+        <!-- Enlaces -->
+        <div class="row text-center">
+          <div class="col-12 col-lg mb-3 animate-link">
+            <a href="Index.html" class="footer-link">🏠 Inicio</a>
+          </div>
+          <div class="col-12 col-lg mb-3 animate-link">
+            <a href="preguntas.html" class="footer-link">❓ Preguntas Frecuentes</a>
+          </div>
+          <div class="col-12 col-lg mb-3 animate-link">
+            <a href="contacto.html" class="footer-link">📞 Contáctanos</a>
+          </div>
+          <div class="col-12 col-lg mb-3 animate-link">
+            <a href="terminos.html" class="footer-link">📜 Términos y Condiciones</a>
+          </div>
+          <div class="col-12 col-lg mb-3 animate-link">
+            <a href="privacidad.html" class="footer-link">🔐 Privacidad</a>
+          </div>
+        </div>
+    
+        <!-- Derechos -->
+        <div class="text-center mt-4 small text-muted">
+          © 2025 FYNIX • Todos los derechos reservados
+        </div>
+      </div>
+    </footer>
+    
+    <script>
+      function enviarMensaje() {
+        const nombre = document.querySelector('input[name="name"]').value.trim();
+        const apellido = document.querySelector('input[name="last_name"]').value.trim();
+        const email = document.querySelector('input[name="email"]').value.trim();
+        const mensaje = document.querySelector('textarea[name="text"]').value.trim();
+    
+        if (!nombre || !apellido || !email || !mensaje) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Campos incompletos',
+            text: 'Por favor, llena todos los campos antes de enviar.',
+          });
+          return;
+        }
+    
+        const texto = `Hola, soy ${nombre} ${apellido}.\nMi correo es: ${email}\n\nMensaje:\n${mensaje}`;
+        const numero = "5213317056123";
+        const url = `https://wa.me/${numero}?text=${encodeURIComponent(texto)}`;
+    
+        window.open(url, '_blank');
+    
+        Swal.fire({
+          icon: 'success',
+          title: '¡Mensaje enviado!',
+          text: 'Abriendo WhatsApp...',
+          timer: 2000,
+          showConfirmButton: false
+        });
+      }
+    </script>
+    
+    
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz Interactivo FYNIX</title>
+  <link rel="stylesheet" href="preguntas.css">
+  <link rel="stylesheet" href="footer.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+
+<body>
+  <header>
+    <img src="imgs/Logo.png" alt="FYNIX Logo">
+  </header>
+  <div class="quiz-container" id="quizContainer">
+    <div class="timer" id="timer">Tiempo: 15s</div>
+    <div class="question-card" id="questionCard"></div>
+    <div class="result" id="result"></div>
+    <div style="text-align: center; margin-top: 20px;">
+        <button class="spark-btn" id="shareBtn" style="display:none">Compartir</button>
+    </div>
+  </div>
+
+  <footer id="footer" class="footer pt-5 pb-5 text-white">
+    <div class="container text-center">
+      <!-- Logo -->
+      <div class="mb-4 animate-logo">
+        <img src="imgs/Logo.png" alt="Logo FYNIX" class="footer-logo">
+      </div>
+  
+      <!-- Enlaces -->
+      <div class="row text-center">
+        <div class="col-12 col-lg mb-3 animate-link">
+          <a href="Index.html" class="footer-link">🏠 Inicio</a>
+        </div>
+        <div class="col-12 col-lg mb-3 animate-link">
+          <a href="preguntas.html" class="footer-link">❓ Preguntas Frecuentes</a>
+        </div>
+        <div class="col-12 col-lg mb-3 animate-link">
+          <a href="contacto.html" class="footer-link">📞 Contáctanos</a>
+        </div>
+        <div class="col-12 col-lg mb-3 animate-link">
+          <a href="terminos.html" class="footer-link">📜 Términos y Condiciones</a>
+        </div>
+        <div class="col-12 col-lg mb-3 animate-link">
+          <a href="privacidad.html" class="footer-link">🔐 Privacidad</a>
+        </div>
+      </div>
+  
+      <!-- Derechos -->
+      <div class="text-center mt-4 small text-muted">
+        © 2025 FYNIX • Todos los derechos reservados
+      </div>
+    </div>
+  </footer>
+
+<script>
+    const questions = [
+      {
+        question: "¿Qué lenguaje se utiliza para estructurar páginas web?",
+        options: ["CSS", "HTML", "JavaScript"],
+        answer: "HTML"
+      },
+      {
+        question: "¿Cuál es una herramienta común de diseño gráfico?",
+        options: ["Illustrator", "MySQL", "Python"],
+        answer: "Illustrator"
+      },
+      {
+        question: "¿Qué herramienta permite automatizar tareas sin código?",
+        options: ["Zapier", "Photoshop", "Figma"],
+        answer: "Zapier"
+      },
+      {
+        question: "¿Cuál es el propósito principal del CSS?",
+        options: ["Hacer cálculos", "Diseñar visualmente", "Conectar base de datos"],
+        answer: "Diseñar visualmente"
+      },
+      {
+        question: "¿Qué lenguaje es común en automatización web?",
+        options: ["PHP", "JavaScript", "Python"],
+        answer: "Python"
+      },
+      {
+        question: "¿Cuál es una ventaja del diseño gráfico para empresas?",
+        options: ["Mejor rendimiento del servidor", "Aumentar la estética visual", "Mejorar scripts"],
+        answer: "Aumentar la estética visual"
+      }
+    ];
+  
+    let shuffledQuestions = [];
+    let currentIndex = 0;
+    let score = 0;
+    let timer;
+    let timeLeft = 15;
+  
+    function shuffle(array) {
+      return array.sort(() => Math.random() - 0.5);
+    }
+  
+    function startQuiz() {
+      shuffledQuestions = shuffle([...questions]);
+      currentIndex = 0;
+      score = 0;
+      document.getElementById("shareBtn").style.display = "none";
+      loadQuestion();
+    }
+  
+    function loadQuestion() {
+      if (currentIndex >= shuffledQuestions.length) {
+        Swal.fire({
+          title: "¡Quiz terminado!",
+          text: `Tu puntuación: ${score}/${shuffledQuestions.length}`,
+          icon: "info"
+        }).then(() => {
+          if (score >= 3) {
+            document.getElementById("shareBtn").style.display = 'inline-block';
+          }
+        });
+        return;
+      }
+  
+      const q = shuffledQuestions[currentIndex];
+      document.getElementById("questionCard").innerHTML = `
+        <h3>${q.question}</h3>
+        <div class="options">
+          ${q.options.map(opt => `<button onclick="checkAnswer('${opt}')">${opt}</button>`).join('')}
+        </div>
+      `;
+      document.getElementById("result").textContent = "";
+      startTimer();
+    }
+  
+    function checkAnswer(selected) {
+      stopTimer();
+      const q = shuffledQuestions[currentIndex];
+      const isCorrect = selected === q.answer;
+      const sound = new Audio(isCorrect ? 'correct.mp3' : 'incorrect.mp3');
+      sound.play();
+  
+      if (isCorrect) {
+        score++;
+        Swal.fire({
+          icon: 'success',
+          title: '¡Correcto!',
+          text: '¡Sigue así!'
+        }).then(() => {
+          currentIndex++;
+          loadQuestion();
+        });
+      } else if (selected === "Tiempo agotado") {
+        Swal.fire({
+          icon: 'error',
+          title: '¡Tiempo agotado!',
+          text: `La respuesta era: ${q.answer}`
+        }).then(() => {
+          currentIndex++;
+          loadQuestion();
+        });
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: '¡Incorrecto!',
+          text: `La respuesta correcta era: ${q.answer}`
+        }).then(() => {
+          currentIndex++;
+          loadQuestion();
+        });
+      }
+  
+      updateRanking(score);
+    }
+  
+    function startTimer() {
+      timeLeft = 15;
+      document.getElementById("timer").textContent = `Tiempo: ${timeLeft}s`;
+      timer = setInterval(() => {
+        timeLeft--;
+        document.getElementById("timer").textContent = `Tiempo: ${timeLeft}s`;
+        if (timeLeft === 0) {
+          clearInterval(timer);
+          checkAnswer("Tiempo agotado");
+        }
+      }, 1000);
+    }
+  
+    function stopTimer() {
+      clearInterval(timer);
+    }
+  
+    function updateRanking(score) {
+      let stored = JSON.parse(localStorage.getItem("fynixRanking")) || [];
+      stored.push(score);
+      localStorage.setItem("fynixRanking", JSON.stringify(stored));
+    }
+  
+    document.getElementById("shareBtn").addEventListener("click", () => {
+  const total = questions.length;
+  const shareText = `¡Obtuve ${score} de ${total} puntos en el quiz de FYNIX! 🚀`;
+
+  // Efecto de confeti
+  confetti({
+    particleCount: 150,
+    spread: 70,
+    origin: { y: 0.6 }
+  });
+
+  // Intentar compartir nativamente
+  if (navigator.share) {
+    navigator.share({
+      title: 'Quiz FYNIX',
+      text: shareText,
+      url: 'https://tusitio.com/quiz' // O usa el link general del quiz
+    }).catch(err => console.error("Error al compartir", err));
+  } else {
+    // Si no se puede usar share nativo, mostrar modal
+    Swal.fire({
+      icon: 'info',
+      title: '¡Comparte tu resultado!',
+      html: `
+        <p>${shareText}</p>
+        <textarea readonly style="width:100%; padding:5px; text-align:center; margin-top:10px;">${shareText}</textarea>
+        <p style="font-size: 0.9em;">Copia y pega este texto en tus redes sociales favoritas.</p>
+      `
+    });
+  }
+});
+
+    window.onload = () => startQuiz();
+  </script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  
+</body>
+</html>
